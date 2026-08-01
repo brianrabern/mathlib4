@@ -64,8 +64,12 @@ relation `r : α → β → Prop`, see `Mathlib/Combinatorics/Enumerative/Double
 
 ## TODO
 
-* Prove that `G.IsBipartite` iff `G` does not contain an odd cycle.
-  I.e., `G.IsBipartite ↔ ∀ n, (cycleGraph (2*n+1)).Free G`.
+* `SimpleGraph.isBipartite_iff_not_hasOddCycle` proves that `G.IsBipartite` iff `G` has no odd
+  cycle, phrased as the nonexistence of a closed walk that is a cycle of odd length. It lives in
+  `Mathlib/Combinatorics/SimpleGraph/Coloring/OddCycle.lean` rather than here, because the proof
+  uses `two_colorable_iff_forall_loop_even` from `Coloring/Constructions.lean`, which imports this
+  module. It remains to derive the phrasing in terms of subgraph containment,
+  `G.IsBipartite ↔ ∀ n, (cycleGraph (2*n+1)).Free G`.
 -/
 
 @[expose] public section
